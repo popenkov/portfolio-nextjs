@@ -1,0 +1,12 @@
+[
+  {
+    "id": "telegram",
+    "img": "/assets/svg/telegram.svg",
+    "href": "https://t.me/popenkovdev"
+  },
+  {
+    "id": "github",
+    "img": "/assets/svg/github.svg",
+    "href": "https://github.com/popenkov"
+  }
+]
