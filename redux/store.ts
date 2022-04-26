@@ -1,9 +1,10 @@
-import { configureStore } from '@reduxjs/toolkit';
-import headerFooter from './reducers/headerFooter';
+import { configureStore, Action } from "@reduxjs/toolkit";
+import headerFooterSlice from "./reducers/headerFooter";
+import { ThunkAction } from "redux-thunk";
 
 export const store = configureStore({
   reducer: {
-    headerFooter: headerFooter,
+    headerFooter: headerFooterSlice,
     // comments: commentsReducer,
   },
 });
@@ -12,3 +13,4 @@ export const store = configureStore({
 export type RootState = ReturnType<typeof store.getState>;
 // Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
 export type AppDispatch = typeof store.dispatch;
+export type AppThunk = ThunkAction<void, RootState, unknown, Action>;

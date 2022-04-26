@@ -1,21 +1,21 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import type { RootState } from '../store';
-import { NavigationLink, FooterSocialLink } from '../../@types/header';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import type { RootState } from "../store";
+import { NavigationLink, FooterSocialLink } from "../../@types/header";
 
 // Define a type for the slice state
-interface CounterState {
+interface headerFooterState {
   header: NavigationLink[];
   footer: FooterSocialLink[];
 }
 
 // Define the initial state using that type
-const initialState: CounterState = {
+const initialState: headerFooterState = {
   header: [],
   footer: [],
 };
 
-export const counterSlice = createSlice({
-  name: 'headerFooter',
+export const headerFooterSlice = createSlice({
+  name: "headerFooter",
   // `createSlice` will infer the state type from the `initialState` argument
   initialState,
   reducers: {
@@ -28,9 +28,9 @@ export const counterSlice = createSlice({
   },
 });
 
-export const { setHeader, setFooter } = counterSlice.actions;
+export const { setHeader, setFooter } = headerFooterSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type
 export const selectCount = (state: RootState) => state.headerFooter;
 
-export default counterSlice.reducer;
+export default headerFooterSlice.reducer;
