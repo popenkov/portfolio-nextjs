@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
 import type { RootState } from "../store";
 import { NavigationLink, FooterSocialLink } from "../../@types/header";
 
@@ -14,6 +14,12 @@ const initialState: headerFooterState = {
   footer: [],
 };
 
+const fetchHeader = createAsyncThunk("getHeader", async () => {
+  const response = await fetch("http://localhost:3000/api/header");
+  const data = await response.json();
+  return data;
+});
+
 export const headerFooterSlice = createSlice({
   name: "headerFooter",
   // `createSlice` will infer the state type from the `initialState` argument
@@ -25,6 +31,11 @@ export const headerFooterSlice = createSlice({
     setFooter: (state, action: PayloadAction<FooterSocialLink[]>) => {
       state.footer = action.payload;
     },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(fetchHeader.fulfilled, (state, action) => {
+      state.header = action.payload;
+    });
   },
 });
 
