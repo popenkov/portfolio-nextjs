@@ -1,0 +1,11 @@
+{
+  "title": "home",
+  "name": "PopenkovAnton",
+  "subtitle": "Home",
+  "img": {
+    "src": "/assets/images/portrait.png",
+    "alt": "портрет пользователя",
+    "width": "400",
+    "height": "400"
+  }
+}

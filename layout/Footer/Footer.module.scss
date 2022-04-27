@@ -1,5 +1,7 @@
 .footer {
   background: #292929;
+  height: auto;
+  flex-grow: 0;
 }
 
 .footerContainer {
@@ -14,7 +16,7 @@
 }
 
 .copyright {
-  font-family: 'Manrope';
+  font-family: "Manrope";
   font-style: normal;
   font-weight: 600;
   font-size: 16px;

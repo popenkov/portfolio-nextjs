@@ -1,6 +1,7 @@
 import type { GetServerSideProps, NextPage } from "next";
 import { useEffect } from "react";
 import { FooterSocialLink, NavigationLink } from "../@types/header";
+import MainDescription from "../components/MainDescription/MainDescription";
 import { withLayout } from "../layout/Layout";
 import { useAppDispatch } from "../redux/hooks";
 import {
@@ -18,7 +19,12 @@ type HomeProps = {
   footer: FooterSocialLink[];
 };
 const Home: NextPage<HomeProps> = ({ header, footer }) => {
-  return <div className={styles.container}>Main Page</div>;
+  return (
+    <div className={styles.mainContainer}>
+      Main Page
+      <MainDescription />
+    </div>
+  );
 };
 
 export default withLayout(Home);
