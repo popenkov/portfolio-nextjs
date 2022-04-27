@@ -4,11 +4,18 @@
 }
 
 .navigationLink {
-  font-family: 'Manrope';
+  font-family: "Manrope";
   font-weight: 700;
   font-size: 18px;
   line-height: 25px;
   letter-spacing: -0.5px;
   color: #dedede;
   margin-left: 60px;
+}
+.navigationLink:hover {
+  border-bottom: 1px solid #dedede;
+}
+
+.activeLink {
+  border-bottom: 1px solid #dedede;
 }

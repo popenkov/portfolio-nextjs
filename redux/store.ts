@@ -7,9 +7,13 @@ import {
 } from "@reduxjs/toolkit";
 import { createWrapper, HYDRATE } from "next-redux-wrapper";
 import headerFooter from "./reducers/headerFooter";
+import mainPage from "./reducers/mainPage";
+import blog from "./reducers/blog";
 
 const combinedReducer = combineReducers({
   headerFooter,
+  mainPage,
+  blog,
 });
 
 const reducer = (

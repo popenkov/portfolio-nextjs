@@ -1,27 +1,16 @@
-import type { GetServerSideProps, NextPage } from "next";
-import { useEffect } from "react";
+import type { NextPage } from "next";
 import { FooterSocialLink, NavigationLink } from "../@types/header";
 import MainDescription from "../components/MainDescription/MainDescription";
 import { withLayout } from "../layout/Layout";
-import { useAppDispatch } from "../redux/hooks";
-import {
-  fetchHeader,
-  fetchFooter,
-  setFooter,
-  setHeader,
-} from "../redux/reducers/headerFooter";
-import { makeStore, wrapper } from "../redux/store";
-import styles from "../styles/Home.module.css";
-import { getData } from "../utils/utlils";
 
-type HomeProps = {
-  header: NavigationLink[];
-  footer: FooterSocialLink[];
-};
-const Home: NextPage<HomeProps> = ({ header, footer }) => {
+import { fetchHeader, fetchFooter } from "../redux/reducers/headerFooter";
+import { fetchMain } from "../redux/reducers/mainPage";
+import { wrapper } from "../redux/store";
+import styles from "../styles/Home.module.css";
+
+const Home: NextPage = () => {
   return (
     <div className={styles.mainContainer}>
-      Main Page
       <MainDescription />
     </div>
   );
@@ -34,5 +23,6 @@ export const getServerSideProps = wrapper.getServerSideProps(
     async () => {
       await dispatch(fetchHeader());
       await dispatch(fetchFooter());
+      await dispatch(fetchMain());
     }
 );

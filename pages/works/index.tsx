@@ -1,7 +1,8 @@
 import React from "react";
+import { withLayout } from "../../layout/Layout";
 
-function index() {
-  return <div>index</div>;
+function Works() {
+  return <div>Works</div>;
 }
 
-export default index;
+export default withLayout(Works);

@@ -5,9 +5,14 @@
     "href": "/"
   },
   {
-    "id": "work",
-    "title": "Work",
-    "href": "/work"
+    "id": "works",
+    "title": "Works",
+    "href": "/works"
+  },
+  {
+    "id": "blog",
+    "title": "Blog",
+    "href": "/blog"
   },
   {
     "id": "contact",

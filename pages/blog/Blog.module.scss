@@ -1,0 +1,22 @@
+.blog {
+  margin-top: 90px;
+  padding: 50px 0;
+}
+
+.blogTitle {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 49px;
+  text-align: center;
+  letter-spacing: -0.5px;
+  color: #dedede;
+}
+
+.blogContainer {
+  margin: -12px;
+
+  display: flex;
+  flex-wrap: wrap;
+}

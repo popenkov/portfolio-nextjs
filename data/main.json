@@ -1,7 +1,8 @@
 {
-  "title": "home",
-  "name": "PopenkovAnton",
-  "subtitle": "Home",
+  "title": "Hi, I am Popenkov Anton",
+  "title2": " A Frontend Developer based in Vladimir.",
+  "name": "Popenkov Anton",
+  "subtitle": "I help businesses and companies reach their goals by designing user-centric digital products & interactive experiences.",
   "img": {
     "src": "/assets/images/portrait.png",
     "alt": "портрет пользователя",

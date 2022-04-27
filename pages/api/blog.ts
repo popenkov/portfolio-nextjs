@@ -1,12 +1,12 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-// http://localhost:3000/api/header-footer
+// http://localhost:3000/api/blog
 import type { NextApiRequest, NextApiResponse } from "next";
-import type { MainState } from "../../@types/main";
-import main from "../../data/main.json";
+import type { PostType } from "../../@types/blog";
+import blog from "../../data/blog.json";
 
 export default function handler(
   req: NextApiRequest,
-  res: NextApiResponse<MainState>
+  res: NextApiResponse<PostType[]>
 ) {
-  res.status(200).json(main);
+  res.status(200).json(blog);
 }
