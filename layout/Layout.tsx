@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useEffect } from "react";
-import { Provider } from "react-redux";
-import store from "../redux/store";
+/* import { Provider } from "react-redux";
+import store from "../redux/store"; */
 import { Header } from "./Header/Header";
 import { Footer } from "./Footer/Footer";
 import styles from "./Layout.module.scss";
@@ -21,11 +21,11 @@ export const withLayout = <T extends Record<string, unknown>>(
 ) => {
   return function withLayoutComponent(props: T): JSX.Element {
     return (
-      <Provider store={store}>
-        <Layout>
-          <Component {...props} />
-        </Layout>
-      </Provider>
+      /*   <Provider store={store}> */
+      <Layout>
+        <Component {...props} />
+      </Layout>
+      /*     </Provider> */
     );
   };
 };

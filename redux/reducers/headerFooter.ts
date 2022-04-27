@@ -14,13 +14,18 @@ const initialState: headerFooterState = {
   footer: [],
 };
 
-const fetchHeader = createAsyncThunk("getHeader", async () => {
+export const fetchHeader = createAsyncThunk("setHeader", async () => {
   const response = await fetch("http://localhost:3000/api/header");
   const data = await response.json();
   return data;
 });
+export const fetchFooter = createAsyncThunk("setFooter", async () => {
+  const response = await fetch("http://localhost:3000/api/footer");
+  const data = await response.json();
+  return data;
+});
 
-export const headerFooterSlice = createSlice({
+export const headerFooter = createSlice({
   name: "headerFooter",
   // `createSlice` will infer the state type from the `initialState` argument
   initialState,
@@ -36,12 +41,15 @@ export const headerFooterSlice = createSlice({
     builder.addCase(fetchHeader.fulfilled, (state, action) => {
       state.header = action.payload;
     });
+    builder.addCase(fetchFooter.fulfilled, (state, action) => {
+      state.footer = action.payload;
+    });
   },
 });
 
-export const { setHeader, setFooter } = headerFooterSlice.actions;
+export const { setHeader, setFooter } = headerFooter.actions;
 
 // Other code such as selectors can use the imported `RootState` type
 export const selectCount = (state: RootState) => state.headerFooter;
 
-export default headerFooterSlice.reducer;
+export default headerFooter.reducer;

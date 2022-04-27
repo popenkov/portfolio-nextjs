@@ -1,16 +1,14 @@
 import { FooterSocialLink } from "../../@types/header";
-import useSWR from "swr";
 import styles from "./FooterSocialNet.module.scss";
-
-const fetcher = (url: string) => fetch(url).then((res) => res.json());
+import { useAppSelector } from "../../redux/hooks";
 
 function FooterSocialNet(): JSX.Element {
-  const { data, error } = useSWR("/api/footer", fetcher);
+  const { footer } = useAppSelector((state) => state.headerFooter);
 
   return (
     <div className={styles.socialContainer}>
-      {data &&
-        data.map((link: FooterSocialLink) => {
+      {footer &&
+        footer.map((link: FooterSocialLink) => {
           return (
             <a
               key={link.id}

@@ -1,38 +1,41 @@
-import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
-import headerFooterSlice from "./reducers/headerFooter";
+import {
+  Action,
+  AnyAction,
+  combineReducers,
+  configureStore,
+  ThunkAction,
+} from "@reduxjs/toolkit";
+import { createWrapper, HYDRATE } from "next-redux-wrapper";
+import headerFooter from "./reducers/headerFooter";
 
-export function makeStore(preloadedState: {}) {
-  return configureStore({
-    reducer: { headerFooter: headerFooterSlice },
-    preloadedState,
-  });
-}
+const combinedReducer = combineReducers({
+  headerFooter,
+});
 
-const store = makeStore({});
-
-// https://www.quintessential.gr/blog/development/how-to-integrate-redux-with-next-js-and-ssr
-/* let store: {}; */
-/* export const initialiseStore = (preloadedState: any) => {
-  let _store = store ?? makeStore(preloadedState);
-
-  if (preloadedState && store) {
-    _store = makeStore({ ...store.getState(), ...preloadedState });
-    store = undefined;
+const reducer = (
+  state: ReturnType<typeof combinedReducer>,
+  action: AnyAction
+) => {
+  if (action.type === HYDRATE) {
+    const nextState = {
+      ...state, // use previous state
+      ...action.payload, // apply delta from hydration
+    };
+    return nextState;
+  } else {
+    return combinedReducer(state, action);
   }
+};
 
-  // For SSG and SSR always create a new store
-  if (typeof window === "undefined") return _store;
-  // Create the store once in the client
-  if (!store) store = _store;
+export const makeStore = () =>
+  configureStore({
+    reducer,
+  });
 
-  return _store;
-}; */
-//
+type Store = ReturnType<typeof makeStore>;
 
-// Infer the `RootState` and `AppDispatch` types from the store itself
-export type RootState = ReturnType<typeof store.getState>;
-// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
-export type AppDispatch = typeof store.dispatch;
+export type AppDispatch = Store["dispatch"];
+export type RootState = ReturnType<Store["getState"]>;
 export type AppThunk<ReturnType = void> = ThunkAction<
   ReturnType,
   RootState,
@@ -40,4 +43,4 @@ export type AppThunk<ReturnType = void> = ThunkAction<
   Action<string>
 >;
 
-export default store;
+export const wrapper = createWrapper(makeStore, { debug: true });

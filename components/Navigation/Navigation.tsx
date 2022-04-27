@@ -1,17 +1,15 @@
-import Link from 'next/link';
-import { NavigationLink } from '../../@types/header';
-import useSWR from 'swr';
-import styles from './Navigation.module.scss';
-
-const fetcher = (url: string) => fetch(url).then((res) => res.json());
+import Link from "next/link";
+import { NavigationLink } from "../../@types/header";
+import styles from "./Navigation.module.scss";
+import { useAppSelector } from "../../redux/hooks";
 
 function Navigation(): JSX.Element {
-  const { data, error } = useSWR('/api/header', fetcher);
+  const { header } = useAppSelector((state) => state.headerFooter);
 
   return (
     <nav className={styles.navigation}>
-      {data &&
-        data.map((link: NavigationLink) => {
+      {header &&
+        header.map((link: NavigationLink) => {
           return (
             <Link key={link.id} href={link.href}>
               <a className={styles.navigationLink}>{link.title}</a>
