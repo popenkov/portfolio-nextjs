@@ -1,8 +1,14 @@
-import React from "react";
-import { withLayout } from "../../layout/Layout";
+import styles from './Works.module.scss';
+
+import Codewars from '../../components/Codewars/Codewars';
+import { withLayout } from '../../layout/Layout';
 
 function Works() {
-  return <div>Works</div>;
+  return (
+    <div className={styles.worksContainer}>
+      <Codewars />
+    </div>
+  );
 }
 
 export default withLayout(Works);
