@@ -9,7 +9,7 @@ export type PostType = {
   title: string;
   date: string;
   preview: string;
-  href: string;
+  href?: string;
   id: number;
 };
 

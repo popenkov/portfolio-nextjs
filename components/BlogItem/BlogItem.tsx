@@ -1,8 +1,8 @@
-import React from "react";
-import type { PostType } from "../../@types/blog";
-import Image from "next/image";
-import styles from "./BlogItem.module.scss";
-import Link from "next/link";
+import React from 'react';
+import type { PostType } from '../../@types/blog';
+import Image from 'next/image';
+import styles from './BlogItem.module.scss';
+import Link from 'next/link';
 
 function BlogItem({
   date,
