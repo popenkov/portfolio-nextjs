@@ -79,10 +79,17 @@ const Post: NextPage = () => {
 
 export default withLayout(Post);
 
+// export const getServerSideProps = wrapper.getServerSideProps(
+//   ({ dispatch }) =>
+//     async () => {
+//       await dispatch(fetchHeader());
+//       await dispatch(fetchFooter());
+//     }
+// );
+
 export const getServerSideProps = wrapper.getServerSideProps(
-  ({ dispatch }) =>
-    async () => {
-      await dispatch(fetchHeader());
-      await dispatch(fetchFooter());
-    }
+  (store) => async (context) => {
+    console.log(context);
+    store.dispatch(fetchHeader());
+  }
 );
