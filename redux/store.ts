@@ -5,7 +5,7 @@ import {
   configureStore,
   ThunkAction,
 } from "@reduxjs/toolkit";
-import { createWrapper, HYDRATE } from "next-redux-wrapper";
+import { createWrapper, Context, HYDRATE } from "next-redux-wrapper";
 import headerFooter from "./reducers/headerFooter";
 import mainPage from "./reducers/mainPage";
 import blog from "./reducers/blog";
@@ -31,7 +31,7 @@ const reducer = (
   }
 };
 
-export const makeStore = () =>
+export const makeStore = (context: Context) =>
   configureStore({
     reducer,
   });
@@ -47,4 +47,6 @@ export type AppThunk<ReturnType = void> = ThunkAction<
   Action<string>
 >;
 
-export const wrapper = createWrapper(makeStore, { debug: true });
+export const wrapper = createWrapper(makeStore, {
+  debug: true,
+});

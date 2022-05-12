@@ -7,6 +7,7 @@ import cn from "classnames";
 
 function Navigation(): JSX.Element {
   const { header } = useAppSelector((state) => state.headerFooter);
+  console.log(header);
   const [activeLink, setActiveLink] = useState("home");
   const onClickLink = (id: string) => {
     setActiveLink(id);
